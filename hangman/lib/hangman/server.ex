@@ -4,6 +4,16 @@ defmodule Hangman.Server do
     alias Hangman.Game
 
     use GenServer
+    
+    def child_spec(_args) do
+        %{
+          id: @me,
+          start: { @me, :start_link, []},
+          restart: :permanent,
+          shutdown: 5000,
+          type: :worker
+        }
+    end
 
     def start_link() do
         GenServer.start_link(@me, nil)

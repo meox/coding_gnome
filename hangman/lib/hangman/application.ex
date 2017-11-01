@@ -5,10 +5,7 @@ defmodule Hangman.Application do
     def start(_type, _args) do
 
         children = [
-            %{
-                id: Hangmans_Supervisor,
-                start: {Hangman.Server, :start_link, []}
-            }
+           Hangman.Server,
         ]
 
         options = [
