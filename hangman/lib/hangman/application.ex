@@ -6,13 +6,13 @@ defmodule Hangman.Application do
 
         children = [
             %{
-                id: Hangman_Supervisor,
+                id: Hangmans_Supervisor,
                 start: {Hangman.Server, :start_link, []}
             }
         ]
 
         options = [
-            name: Hangman.Supervisor,
+            name: Hangmans.Supervisor,
             strategy: :simple_one_for_one,
             max_restarts: 3,
             max_seconds: 5,
