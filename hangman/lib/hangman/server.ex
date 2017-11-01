@@ -7,11 +7,11 @@ defmodule Hangman.Server do
     
     def child_spec(_args) do
         %{
-          id: @me,
-          start: { @me, :start_link, []},
-          restart: :permanent,
-          shutdown: 5000,
-          type: :worker
+            id: @me,
+            start: { @me, :start_link, []},
+            restart: :permanent,
+            shutdown: 5000,
+            type: :worker
         }
     end
 
