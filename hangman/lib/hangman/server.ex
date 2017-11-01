@@ -19,7 +19,6 @@ defmodule Hangman.Server do
     end
 
     def handle_call({ :tally }, _from, game) do
-        tally = Game.tally(game)
-        { :reply, tally, game}
+        { :reply, Game.tally(game), game}
     end
 end
