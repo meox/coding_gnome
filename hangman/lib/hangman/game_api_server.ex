@@ -1,6 +1,6 @@
 defmodule Hangman.GameServer do
   def new_game() do
-    {:ok, pid} = Supervisor.start_child(Hangmans.Supervisor, [])
+    {:ok, pid} = Supervisor.start_child(Hangman.Supervisor, [])
     pid
   end
 

@@ -16,7 +16,7 @@ defmodule Hangman.Server do
   end
 
   def start_link() do
-    GenServer.start_link(@me, nil)
+    GenServer.start_link(@me, [])
   end
 
   def init(_) do
