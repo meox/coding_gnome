@@ -5,7 +5,7 @@ defmodule Chain do
   )
 
   def start_link(next_node) do
-    spawn_link(Chain, :message_loop, %Chain{next_node: next_node})
+    spawn_link(Chain, :message_loop, [%Chain{next_node: next_node}])
     |> Process.register(:chainer)
   end
 
