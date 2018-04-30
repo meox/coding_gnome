@@ -31,4 +31,12 @@ defmodule Hangman.Server do
   def handle_call({:tally}, _from, game) do
     {:reply, Game.tally(game), game}
   end
+  
+  def handle_call({:solution}, _from, game = %{game_state: :lost}) do
+    {:reply, Game.solution(game), game}
+  end
+  
+  def handle_call({:solution}, _from, game) do
+    {:reply, "", game}
+  end
 end

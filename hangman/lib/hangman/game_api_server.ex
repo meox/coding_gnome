@@ -11,4 +11,8 @@ defmodule Hangman.GameServer do
   def make_move(game_pid, guess) do
     GenServer.call(game_pid, {:make_move, guess})
   end
+  
+  def get_solution(game_pid) do
+    GenServer.call(game_pid, {:solution})
+  end
 end

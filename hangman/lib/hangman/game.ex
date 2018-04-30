@@ -35,6 +35,10 @@ defmodule Hangman.Game do
     }
   end
 
+  def solution(game) do
+    game.letters |> Enum.join("")
+  end
+
   ######
 
   defp accept_move(game, _guess, _already_guessed = true) do

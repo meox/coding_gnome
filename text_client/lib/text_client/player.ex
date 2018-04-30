@@ -8,10 +8,10 @@ defmodule TextClient.Player do
         |> exit_with_message()
     end
 
-    def play(%State{ game_service: game_service, tally: %{ game_state: :lost} }) do
+    def play(%State{ game_service: game_pid, tally: %{ game_state: :lost} }) do
         IO.ANSI.format([
             "Sorry, you ", :red, :bright, "LOST! ", :reset,
-            "(the word was: ", :yellow, :bright, "#{game_service.letters})"
+            "(the word was: ", :yellow, :bright, "#{get_solution(game_pid)})"
         ])
         |> exit_with_message()
     end
@@ -52,5 +52,9 @@ defmodule TextClient.Player do
     defp exit_with_message(msg) do
         IO.puts(msg)
         exit(:normal)
+    end
+
+    defp get_solution(game_pid) do
+        Hangman.get_solution(game_pid)
     end
 end
