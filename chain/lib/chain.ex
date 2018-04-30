@@ -1,7 +1,7 @@
 defmodule Chain do
   defstruct(
     next_node: nil,
-    count: 4
+    count: 1000000
   )
 
   def start_link(next_node) do
@@ -16,8 +16,8 @@ defmodule Chain do
   def message_loop(state = %Chain{}) do
     receive do
       {:trigger, list} ->
-        IO.inspect(list)
-        send({:chainer, state.next_node}, {:trigger, [node() | list]})
+        #IO.inspect(list)
+        send({:chainer, state.next_node}, {:trigger, [node() | Enum.take(list, 100)]})
     end
 
     message_loop(%Chain{state | count: state.count - 1})
